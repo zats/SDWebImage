@@ -54,10 +54,13 @@
 }
 
 - (NSString *)cacheKeyForURL:(NSURL *)url {
+    if (!url) {
+        return @"";
+    }
+    
     if (self.cacheKeyFilter) {
         return self.cacheKeyFilter(url);
-    }
-    else {
+    } else {
         return [url absoluteString];
     }
 }
